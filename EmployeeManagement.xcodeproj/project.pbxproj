@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E19262142898F8C40010FD50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19262132898F8C40010FD50 /* AppDelegate.swift */; };
 		E19262162898F8C40010FD50 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19262152898F8C40010FD50 /* SceneDelegate.swift */; };
-		E19262182898F8C40010FD50 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19262172898F8C40010FD50 /* ViewController.swift */; };
+		E19262182898F8C40010FD50 /* EmployeeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19262172898F8C40010FD50 /* EmployeeListViewController.swift */; };
 		E192621B2898F8C40010FD50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E19262192898F8C40010FD50 /* Main.storyboard */; };
 		E192621E2898F8C50010FD50 /* EmployeeManagement.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E192621C2898F8C50010FD50 /* EmployeeManagement.xcdatamodeld */; };
 		E19262202898F8C80010FD50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E192621F2898F8C80010FD50 /* Assets.xcassets */; };
@@ -40,7 +40,7 @@
 		E19262102898F8C40010FD50 /* EmployeeManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmployeeManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E19262132898F8C40010FD50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E19262152898F8C40010FD50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E19262172898F8C40010FD50 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E19262172898F8C40010FD50 /* EmployeeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListViewController.swift; sourceTree = "<group>"; };
 		E192621A2898F8C40010FD50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E192621D2898F8C50010FD50 /* EmployeeManagement.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EmployeeManagement.xcdatamodel; sourceTree = "<group>"; };
 		E192621F2898F8C80010FD50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 			children = (
 				E19262132898F8C40010FD50 /* AppDelegate.swift */,
 				E19262152898F8C40010FD50 /* SceneDelegate.swift */,
-				E19262172898F8C40010FD50 /* ViewController.swift */,
+				E19262172898F8C40010FD50 /* EmployeeListViewController.swift */,
 				E19262192898F8C40010FD50 /* Main.storyboard */,
 				E192621F2898F8C80010FD50 /* Assets.xcassets */,
 				E19262212898F8C80010FD50 /* LaunchScreen.storyboard */,
@@ -262,7 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E192621E2898F8C50010FD50 /* EmployeeManagement.xcdatamodeld in Sources */,
-				E19262182898F8C40010FD50 /* ViewController.swift in Sources */,
+				E19262182898F8C40010FD50 /* EmployeeListViewController.swift in Sources */,
 				E19262142898F8C40010FD50 /* AppDelegate.swift in Sources */,
 				E19262162898F8C40010FD50 /* SceneDelegate.swift in Sources */,
 			);
