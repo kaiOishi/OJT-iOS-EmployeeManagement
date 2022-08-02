@@ -10,13 +10,15 @@
 		E19262142898F8C40010FD50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19262132898F8C40010FD50 /* AppDelegate.swift */; };
 		E19262162898F8C40010FD50 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19262152898F8C40010FD50 /* SceneDelegate.swift */; };
 		E19262182898F8C40010FD50 /* EmployeeListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19262172898F8C40010FD50 /* EmployeeListViewController.swift */; };
-		E192621B2898F8C40010FD50 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E19262192898F8C40010FD50 /* Main.storyboard */; };
+		E192621B2898F8C40010FD50 /* EmployeeListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E19262192898F8C40010FD50 /* EmployeeListViewController.storyboard */; };
 		E192621E2898F8C50010FD50 /* EmployeeManagement.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E192621C2898F8C50010FD50 /* EmployeeManagement.xcdatamodeld */; };
 		E19262202898F8C80010FD50 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E192621F2898F8C80010FD50 /* Assets.xcassets */; };
 		E19262232898F8C80010FD50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E19262212898F8C80010FD50 /* LaunchScreen.storyboard */; };
 		E192622E2898F8C90010FD50 /* EmployeeManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E192622D2898F8C90010FD50 /* EmployeeManagementTests.swift */; };
 		E19262382898F8C90010FD50 /* EmployeeManagementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19262372898F8C90010FD50 /* EmployeeManagementUITests.swift */; };
 		E192623A2898F8C90010FD50 /* EmployeeManagementUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19262392898F8C90010FD50 /* EmployeeManagementUITestsLaunchTests.swift */; };
+		E1926247289904FD0010FD50 /* InsertEmployeeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1926246289904FD0010FD50 /* InsertEmployeeViewController.storyboard */; };
+		E1926249289907250010FD50 /* InsertEmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1926248289907250010FD50 /* InsertEmployeeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +43,7 @@
 		E19262132898F8C40010FD50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E19262152898F8C40010FD50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E19262172898F8C40010FD50 /* EmployeeListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeListViewController.swift; sourceTree = "<group>"; };
-		E192621A2898F8C40010FD50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E192621A2898F8C40010FD50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/EmployeeListViewController.storyboard; sourceTree = "<group>"; };
 		E192621D2898F8C50010FD50 /* EmployeeManagement.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EmployeeManagement.xcdatamodel; sourceTree = "<group>"; };
 		E192621F2898F8C80010FD50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E19262222898F8C80010FD50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +53,8 @@
 		E19262332898F8C90010FD50 /* EmployeeManagementUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmployeeManagementUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E19262372898F8C90010FD50 /* EmployeeManagementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeManagementUITests.swift; sourceTree = "<group>"; };
 		E19262392898F8C90010FD50 /* EmployeeManagementUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeManagementUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E1926246289904FD0010FD50 /* InsertEmployeeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InsertEmployeeViewController.storyboard; sourceTree = "<group>"; };
+		E1926248289907250010FD50 /* InsertEmployeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertEmployeeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +108,9 @@
 				E19262132898F8C40010FD50 /* AppDelegate.swift */,
 				E19262152898F8C40010FD50 /* SceneDelegate.swift */,
 				E19262172898F8C40010FD50 /* EmployeeListViewController.swift */,
-				E19262192898F8C40010FD50 /* Main.storyboard */,
+				E1926248289907250010FD50 /* InsertEmployeeViewController.swift */,
+				E19262192898F8C40010FD50 /* EmployeeListViewController.storyboard */,
+				E1926246289904FD0010FD50 /* InsertEmployeeViewController.storyboard */,
 				E192621F2898F8C80010FD50 /* Assets.xcassets */,
 				E19262212898F8C80010FD50 /* LaunchScreen.storyboard */,
 				E19262242898F8C80010FD50 /* Info.plist */,
@@ -236,7 +242,8 @@
 			files = (
 				E19262232898F8C80010FD50 /* LaunchScreen.storyboard in Resources */,
 				E19262202898F8C80010FD50 /* Assets.xcassets in Resources */,
-				E192621B2898F8C40010FD50 /* Main.storyboard in Resources */,
+				E1926247289904FD0010FD50 /* InsertEmployeeViewController.storyboard in Resources */,
+				E192621B2898F8C40010FD50 /* EmployeeListViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +270,7 @@
 			files = (
 				E192621E2898F8C50010FD50 /* EmployeeManagement.xcdatamodeld in Sources */,
 				E19262182898F8C40010FD50 /* EmployeeListViewController.swift in Sources */,
+				E1926249289907250010FD50 /* InsertEmployeeViewController.swift in Sources */,
 				E19262142898F8C40010FD50 /* AppDelegate.swift in Sources */,
 				E19262162898F8C40010FD50 /* SceneDelegate.swift in Sources */,
 			);
@@ -301,12 +309,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		E19262192898F8C40010FD50 /* Main.storyboard */ = {
+		E19262192898F8C40010FD50 /* EmployeeListViewController.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				E192621A2898F8C40010FD50 /* Base */,
 			);
-			name = Main.storyboard;
+			name = EmployeeListViewController.storyboard;
 			sourceTree = "<group>";
 		};
 		E19262212898F8C80010FD50 /* LaunchScreen.storyboard */ = {
@@ -448,7 +456,7 @@
 				INFOPLIST_FILE = EmployeeManagement/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = EmployeeListViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -476,7 +484,7 @@
 				INFOPLIST_FILE = EmployeeManagement/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = EmployeeListViewController;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
