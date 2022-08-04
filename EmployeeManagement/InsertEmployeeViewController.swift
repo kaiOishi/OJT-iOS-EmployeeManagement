@@ -22,6 +22,7 @@ class InsertEmployeeViewController : UIViewController{
     private var sectionPicker:UIPickerView = UIPickerView()
     // true -> 男性, false -> 女性, nil -> 未選択
     private var genderSelection:Bool?
+    private var inputs:[String:Any?] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +83,17 @@ class InsertEmployeeViewController : UIViewController{
             self.sectionField.text = self.sectionList[0]
         }
         
+        switch (sectionField.text) {
+        case "シス開":
+            inputs["section"] = 1
+        case "グロカル":
+            inputs["section"] = 2
+        case "ビジソル":
+            inputs["section"] = 3
+        default:
+            break
+        }
+        
         self.sectionField.endEditing(true)
     }
     
@@ -95,6 +107,7 @@ class InsertEmployeeViewController : UIViewController{
         manRadioButton.setTitle("◉", for: .normal)
         womanRadioButton.titleLabel?.text = "○"
         womanRadioButton.titleLabel?.textColor = .black
+        inputs["gender"] = 1
     }
     
     @IBAction func tappedWoman(_ sender: Any) {
@@ -102,41 +115,17 @@ class InsertEmployeeViewController : UIViewController{
         womanRadioButton.setTitle("◉", for: .normal)
         manRadioButton.titleLabel?.text = "○"
         manRadioButton.titleLabel?.textColor = .black
+        inputs["gender"] = 2
     }
     
     @IBAction func register(_ sender: Any) {
         
-        var inputs:[String:Any?] = [:]
         inputs["id"] = self.employeeIdField.text
         inputs["firstName"] = self.firstNameField.text
         inputs["lastName"] = self.lastNameField.text
-        
-        switch (sectionField.text) {
-        case nil :
-            inputs["section"] = nil
-        case "シス開":
-            inputs["section"] = 1
-        case "グロカル":
-            inputs["section"] = 2
-        case "ビジソル":
-            inputs["section"] = 3
-        default:
-            break
-        }
-        
         inputs["mail"] = self.mailField.text
         
-        if genderSelection == nil {
-            inputs["gender"] = nil
-        }
         
-        if genderSelection! {
-            inputs["gender"] = 1
-        } else {
-            inputs["gender"] = 2
-        }
-        
-        print(inputs)
     }
     
 }
@@ -155,6 +144,6 @@ extension InsertEmployeeViewController:UIPickerViewDelegate, UIPickerViewDataSou
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        self.sectionField.text = sectionList[row]
+        sectionField.text = sectionList[row]
     }
 }
