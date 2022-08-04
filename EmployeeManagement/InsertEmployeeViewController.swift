@@ -105,6 +105,38 @@ class InsertEmployeeViewController : UIViewController{
     }
     
     @IBAction func register(_ sender: Any) {
+        
+        var inputs:[String:Any?] = [:]
+        inputs["id"] = self.employeeIdField.text
+        inputs["firstName"] = self.firstNameField.text
+        inputs["lastName"] = self.lastNameField.text
+        
+        switch (sectionField.text) {
+        case nil :
+            inputs["section"] = nil
+        case "シス開":
+            inputs["section"] = 1
+        case "グロカル":
+            inputs["section"] = 2
+        case "ビジソル":
+            inputs["section"] = 3
+        default:
+            break
+        }
+        
+        inputs["mail"] = self.mailField.text
+        
+        if genderSelection == nil {
+            inputs["gender"] = nil
+        }
+        
+        if genderSelection! {
+            inputs["gender"] = 1
+        } else {
+            inputs["gender"] = 2
+        }
+        
+        print(inputs)
     }
     
 }
