@@ -22,7 +22,8 @@ class InsertEmployeeViewController : UIViewController{
     private var sectionPicker:UIPickerView = UIPickerView()
     // true -> 男性, false -> 女性, nil -> 未選択
     private var genderSelection:Bool?
-    private var inputs:[String:Any?] = [:]
+    // 入力値を集約するDictionary
+    private var inputs:[String:String?] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,11 +86,11 @@ class InsertEmployeeViewController : UIViewController{
         
         switch (sectionField.text) {
         case "シス開":
-            inputs["section"] = 1
+            inputs["section"] = "1"
         case "グロカル":
-            inputs["section"] = 2
+            inputs["section"] = "2"
         case "ビジソル":
-            inputs["section"] = 3
+            inputs["section"] = "3"
         default:
             break
         }
@@ -107,7 +108,7 @@ class InsertEmployeeViewController : UIViewController{
         manRadioButton.setTitle("◉", for: .normal)
         womanRadioButton.titleLabel?.text = "○"
         womanRadioButton.titleLabel?.textColor = .black
-        inputs["gender"] = 1
+        inputs["gender"] = "1"
     }
     
     @IBAction func tappedWoman(_ sender: Any) {
@@ -115,17 +116,16 @@ class InsertEmployeeViewController : UIViewController{
         womanRadioButton.setTitle("◉", for: .normal)
         manRadioButton.titleLabel?.text = "○"
         manRadioButton.titleLabel?.textColor = .black
-        inputs["gender"] = 2
+        inputs["gender"] = "2"
     }
     
     @IBAction func register(_ sender: Any) {
-        
         inputs["id"] = self.employeeIdField.text
         inputs["firstName"] = self.firstNameField.text
         inputs["lastName"] = self.lastNameField.text
         inputs["mail"] = self.mailField.text
         
-        
+        print(ValidationEmployeeInfo.executeValidation(inputs))
     }
     
 }

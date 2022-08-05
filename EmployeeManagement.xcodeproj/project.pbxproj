@@ -19,6 +19,7 @@
 		E192623A2898F8C90010FD50 /* EmployeeManagementUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19262392898F8C90010FD50 /* EmployeeManagementUITestsLaunchTests.swift */; };
 		E1926247289904FD0010FD50 /* InsertEmployeeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1926246289904FD0010FD50 /* InsertEmployeeViewController.storyboard */; };
 		E1926249289907250010FD50 /* InsertEmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1926248289907250010FD50 /* InsertEmployeeViewController.swift */; };
+		E1B3C8C6289CAA4D00BB6838 /* ValidationEmployeeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3C8C5289CAA4D00BB6838 /* ValidationEmployeeInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,7 @@
 		E19262392898F8C90010FD50 /* EmployeeManagementUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeManagementUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E1926246289904FD0010FD50 /* InsertEmployeeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InsertEmployeeViewController.storyboard; sourceTree = "<group>"; };
 		E1926248289907250010FD50 /* InsertEmployeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertEmployeeViewController.swift; sourceTree = "<group>"; };
+		E1B3C8C5289CAA4D00BB6838 /* ValidationEmployeeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationEmployeeInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 				E19262152898F8C40010FD50 /* SceneDelegate.swift */,
 				E19262172898F8C40010FD50 /* EmployeeListViewController.swift */,
 				E1926248289907250010FD50 /* InsertEmployeeViewController.swift */,
+				E1B3C8C5289CAA4D00BB6838 /* ValidationEmployeeInfo.swift */,
 				E19262192898F8C40010FD50 /* EmployeeListViewController.storyboard */,
 				E1926246289904FD0010FD50 /* InsertEmployeeViewController.storyboard */,
 				E192621F2898F8C80010FD50 /* Assets.xcassets */,
@@ -272,6 +275,7 @@
 				E19262182898F8C40010FD50 /* EmployeeListViewController.swift in Sources */,
 				E1926249289907250010FD50 /* InsertEmployeeViewController.swift in Sources */,
 				E19262142898F8C40010FD50 /* AppDelegate.swift in Sources */,
+				E1B3C8C6289CAA4D00BB6838 /* ValidationEmployeeInfo.swift in Sources */,
 				E19262162898F8C40010FD50 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
