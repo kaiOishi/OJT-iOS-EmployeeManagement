@@ -126,6 +126,18 @@ class InsertEmployeeViewController : UIViewController{
         inputs["mail"] = self.mailField.text
         
         print(ValidationEmployeeInfo.executeValidation(inputs))
+        
+        let message = ValidationEmployeeInfo.executeValidation(inputs)
+        if message != nil {
+            let alert = UIAlertController(title: message!, message: nil, preferredStyle: .alert)
+            //ここから追加
+            let ok = UIAlertAction(title: "OK", style: .default) { (action) in
+                self.dismiss(animated: true, completion: nil)
+            }
+            alert.addAction(ok)
+            //ここまで追加
+            present(alert, animated: true, completion: nil)
+        }
     }
     
 }

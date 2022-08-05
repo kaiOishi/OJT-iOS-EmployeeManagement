@@ -26,7 +26,6 @@ class ValidationEmployeeInfo {
     private static let sectionLength = 1
     private static let mailMaxLength = 256
     private static let genderLength = 1
-
     
     // 他社員のデータと重複してもよい情報
     private static let allowedDuplicationItems:[String:Bool] = [
@@ -43,11 +42,11 @@ class ValidationEmployeeInfo {
     private static let mailFormat = ".{3}@.{3}"
     private static let genderFormat = "[1-2]"
     
-    private static let noInputMessage = "{item}を入力してください"
-    private static let invalidLengthMessage = "{item}は{length}文字で入力してください"
-    private static let exceedMaxLengthMessage = "{item}は{length}文字以内で入力してください"
-    private static let duplicateMessage = "入力した{item}はすでに登録されています"
-    private static let invalidFormatMessage = "{item}を正しく入力してください"
+    private static let noInputMessage = "{item}を\n入力してください"
+    private static let invalidLengthMessage = "{item}は{length}文字で\n入力してください"
+    private static let exceedMaxLengthMessage = "{item}は{length}文字以内\nで入力してください"
+    private static let duplicateMessage = "入力した{item}は\nすでに登録されています"
+    private static let invalidFormatMessage = "{item}を\n正しく入力してください"
     
     public static func executeValidation(_ inputs:[String:String?]) -> String?{
         // 社員IDバリデーション
