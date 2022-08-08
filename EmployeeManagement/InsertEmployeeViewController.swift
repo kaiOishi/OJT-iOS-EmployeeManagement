@@ -48,10 +48,7 @@ class InsertEmployeeViewController : UIViewController{
         
         registerButton.backgroundColor = .systemGray
         registerButton.titleLabel?.textColor = .black
-        
-        manRadioButton.titleLabel?.textColor = .black
-        womanRadioButton.titleLabel?.textColor = .black
-        
+                
         NotificationCenter.default.addObserver(self,selector: #selector(orientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
@@ -65,11 +62,9 @@ class InsertEmployeeViewController : UIViewController{
             if gs {
                 manRadioButton.setTitle("◉", for: .normal)
                 womanRadioButton.titleLabel?.text = "○"
-                womanRadioButton.titleLabel?.textColor = .black
             } else {
                 womanRadioButton.setTitle("◉", for: .normal)
                 manRadioButton.titleLabel?.text = "○"
-                manRadioButton.titleLabel?.textColor = .black
             }
         }
     }
@@ -102,16 +97,14 @@ class InsertEmployeeViewController : UIViewController{
     @IBAction func tappedMan(_ sender: Any) {
         self.genderSelection = true
         manRadioButton.setTitle("◉", for: .normal)
-        womanRadioButton.titleLabel?.text = "○"
-        womanRadioButton.titleLabel?.textColor = .black
+        womanRadioButton.setTitle("○", for: .normal)
         inputs["gender"] = "1"
     }
     
     @IBAction func tappedWoman(_ sender: Any) {
         self.genderSelection = false
         womanRadioButton.setTitle("◉", for: .normal)
-        manRadioButton.titleLabel?.text = "○"
-        manRadioButton.titleLabel?.textColor = .black
+        manRadioButton.setTitle("○", for: .normal)
         inputs["gender"] = "2"
     }
     

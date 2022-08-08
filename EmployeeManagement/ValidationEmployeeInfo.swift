@@ -71,7 +71,7 @@ class ValidationEmployeeInfo {
         
         // 所属セクションバリデーション
         if let invalidMessage = validate(input: inputs["section"], required: requiredItems["section"]!, length: sectionLength, format: sectionFormat) {
-            return invalidMessage.replacingOccurrences(of: "{item}", with: "所属セクション").replacingOccurrences(of: "{length}", with: String(sectionLength))
+            return invalidMessage.replacingOccurrences(of: "{item}", with: "所属セクション").replacingOccurrences(of: "{length}", with: String(sectionLength)).replacingOccurrences(of: "入力", with: "選択")
         }
         
         // メールアドレスバリデーション
@@ -81,7 +81,7 @@ class ValidationEmployeeInfo {
         
         // 性別バリデーション
         if let invalidMessage = validate(input: inputs["gender"], required: requiredItems["gender"]!, length: genderLength, format: genderFormat) {
-            return invalidMessage.replacingOccurrences(of: "{item}", with: "性別").replacingOccurrences(of: "{length}", with: String(genderLength))
+            return invalidMessage.replacingOccurrences(of: "{item}", with: "性別").replacingOccurrences(of: "{length}", with: String(genderLength)).replacingOccurrences(of: "入力", with: "選択")
         }
         
         return nil
@@ -113,9 +113,7 @@ class ValidationEmployeeInfo {
     // 固定長桁数情報用
     private static func validate(input:String??, required:Bool, length:Int, format:String?) -> String? {
         if let input = input as? String {
-            
-            if input == "" { return noInputMessage }
-            
+                        
             if !validateLength(input: input, length: length) { return invalidLengthMessage }
             
             if let format = format {
@@ -130,9 +128,7 @@ class ValidationEmployeeInfo {
     // 可変長桁数情報用
     private static func validate(input:String??, required:Bool, maxLength:Int, format:String?) -> String? {
         if let input = input as? String {
-            
-            if input == "" { return noInputMessage }
-            
+                        
             if !validateExeedMaxLength(input: input, maxLength: maxLength) { return exceedMaxLengthMessage }
             
             if let format = format {
