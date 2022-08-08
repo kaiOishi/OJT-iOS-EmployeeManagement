@@ -18,7 +18,7 @@ class InsertEmployeeViewController : UIViewController{
     @IBOutlet weak var registerButton: UIButton!
     
     private var backPreviousBarItem:UIBarButtonItem!
-    private let sectionList = ["シス開", "グロカル", "ビジソル"]
+    private let sectionList = ["選択してください", "シス開", "グロカル", "ビジソル"]
     private var sectionPicker:UIPickerView = UIPickerView()
     // true -> 男性, false -> 女性, nil -> 未選択
     private var genderSelection:Bool?
@@ -36,7 +36,7 @@ class InsertEmployeeViewController : UIViewController{
         
         sectionPicker.delegate = self
         sectionPicker.dataSource = self
-        
+        sectionField.text = "選択してください"
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
         let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
@@ -79,11 +79,6 @@ class InsertEmployeeViewController : UIViewController{
     }
     
     @objc func done() {
-        // Pickerを動かさずDoneを押したらsectionList[0]の内容が選択されないときの対応
-        if self.sectionField.text == "" {
-            self.sectionField.text = self.sectionList[0]
-        }
-        
         switch (sectionField.text) {
         case "シス開":
             inputs["section"] = "1"
@@ -92,14 +87,15 @@ class InsertEmployeeViewController : UIViewController{
         case "ビジソル":
             inputs["section"] = "3"
         default:
-            break
+            inputs["section"] = "0"
         }
         
         self.sectionField.endEditing(true)
     }
     
     @objc func cancel() {
-        self.sectionField.text = ""
+        self.sectionField.text = "選択してください"
+        inputs["section"] = "0"
         self.sectionField.endEditing(true)
     }
     
@@ -120,22 +116,39 @@ class InsertEmployeeViewController : UIViewController{
     }
     
     @IBAction func register(_ sender: Any) {
-        inputs["id"] = self.employeeIdField.text
-        inputs["firstName"] = self.firstNameField.text
-        inputs["lastName"] = self.lastNameField.text
-        inputs["mail"] = self.mailField.text
+        if self.employeeIdField.text == "" {
+            inputs["id"] = nil
+        } else {
+            inputs["id"] = self.employeeIdField.text
+        }
         
-        print(ValidationEmployeeInfo.executeValidation(inputs))
+        if self.firstNameField.text == "" {
+            inputs["firstName"] = nil
+        } else {
+            inputs["firstName"] = self.firstNameField.text
+        }
         
+        if self.lastNameField.text == "" {
+            inputs["lastName"] = nil
+        } else {
+            inputs["lastName"] = self.lastNameField.text
+        }
+        
+        if self.mailField.text == "" {
+            inputs["mail"] = nil
+        } else {
+            inputs["mail"] = self.mailField.text
+        }
+        
+        // バリデーションチェックを行い、問題なければnil、問題があればエラーメッセージが返る
         let message = ValidationEmployeeInfo.executeValidation(inputs)
+        
         if message != nil {
             let alert = UIAlertController(title: message!, message: nil, preferredStyle: .alert)
-            //ここから追加
             let ok = UIAlertAction(title: "OK", style: .default) { (action) in
                 self.dismiss(animated: true, completion: nil)
             }
             alert.addAction(ok)
-            //ここまで追加
             present(alert, animated: true, completion: nil)
         }
     }

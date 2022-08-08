@@ -20,6 +20,7 @@ class ValidationEmployeeInfo {
         "gender" : true
     ]
     
+    // 固定桁数・最大桁数
     private static let idLength = 10
     private static let firstNameMaxLength = 25
     private static let lastNameMaxLength = 25
@@ -37,30 +38,34 @@ class ValidationEmployeeInfo {
         "gender" : true
     ]
     
+    // 指定フォーマット
     private static let idFormat = "YZ[0-9]{8}"
+    private static let firstNameFormat:String? = nil
+    private static let lastNameFormat:String? = nil
     private static let sectionFormat = "[1-3]"
-    private static let mailFormat = ".{3}@.{3}"
+    private static let mailFormat = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$"
     private static let genderFormat = "[1-2]"
     
+    // エラーメッセージ
     private static let noInputMessage = "{item}を\n入力してください"
     private static let invalidLengthMessage = "{item}は{length}文字で\n入力してください"
     private static let exceedMaxLengthMessage = "{item}は{length}文字以内\nで入力してください"
     private static let duplicateMessage = "入力した{item}は\nすでに登録されています"
     private static let invalidFormatMessage = "{item}を\n正しく入力してください"
     
-    public static func executeValidation(_ inputs:[String:String?]) -> String?{
+    public static func executeValidation(_ inputs:[String:String?]) -> String? {
         // 社員IDバリデーション
         if let invalidMessage = validate(input: inputs["id"], required: requiredItems["id"]!, length: idLength, format: idFormat) {
             return invalidMessage.replacingOccurrences(of: "{item}", with: "社員ID").replacingOccurrences(of: "{length}", with: String(idLength))
         }
         
         // 社員名(姓)バリデーション
-        if let invalidMessage = validate(input: inputs["firstName"], required: requiredItems["firstName"]!, maxLength: firstNameMaxLength, format: nil) {
+        if let invalidMessage = validate(input: inputs["firstName"], required: requiredItems["firstName"]!, maxLength: firstNameMaxLength, format: firstNameFormat) {
             return invalidMessage.replacingOccurrences(of: "{item}", with: "社員名(姓)").replacingOccurrences(of: "{length}", with: String(firstNameMaxLength))
         }
         
         // 社員名(名)バリデーション
-        if let invalidMessage = validate(input: inputs["lastName"], required: requiredItems["lastName"]!, maxLength: lastNameMaxLength, format: nil) {
+        if let invalidMessage = validate(input: inputs["lastName"], required: requiredItems["lastName"]!, maxLength: lastNameMaxLength, format: lastNameFormat) {
             return invalidMessage.replacingOccurrences(of: "{item}", with: "社員名(名)").replacingOccurrences(of: "{length}", with: String(lastNameMaxLength))
         }
         
@@ -70,7 +75,7 @@ class ValidationEmployeeInfo {
         }
         
         // メールアドレスバリデーション
-        if let invalidMessage = validate(input: inputs["mail"], required: requiredItems["section"]!, maxLength: mailMaxLength, format: mailFormat) {
+        if let invalidMessage = validate(input: inputs["mail"], required: requiredItems["mail"]!, maxLength: mailMaxLength, format: mailFormat) {
             return invalidMessage.replacingOccurrences(of: "{item}", with: "メールアドレス").replacingOccurrences(of: "{length}", with: String(mailMaxLength))
         }
         
