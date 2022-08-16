@@ -11,7 +11,7 @@ class ValidationEmployeeInfo {
     private init(){}
     
     // 必須入力情報
-    private static let requiredItems:[String:Bool] = [
+    private static let requiredItems: [String:Bool] = [
         "id" : true,
         "firstName" : true,
         "lastName" : true,
@@ -29,7 +29,7 @@ class ValidationEmployeeInfo {
     private static let genderLength = 1
     
     // 他社員のデータと重複してもよい情報
-    private static let allowedDuplicationItems:[String:Bool] = [
+    private static let allowedDuplicationItems: [String:Bool] = [
         "id" : false,
         "firstName" : true,
         "lastName" : true,
@@ -40,10 +40,10 @@ class ValidationEmployeeInfo {
     
     // 指定フォーマット
     private static let idFormat = "YZ[0-9]{8}"
-    private static let firstNameFormat:String? = nil
-    private static let lastNameFormat:String? = nil
+    private static let firstNameFormat: String? = nil
+    private static let lastNameFormat: String? = nil
     private static let sectionFormat = "[1-3]"
-    private static let mailFormat = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}$"
+    private static let mailFormat = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+$"
     private static let genderFormat = "[1-2]"
     
     // エラーメッセージ
@@ -53,6 +53,7 @@ class ValidationEmployeeInfo {
     private static let duplicateMessage = "入力した{item}は\nすでに登録されています"
     private static let invalidFormatMessage = "{item}を\n正しく入力してください"
     
+    // 外部からの呼び出し用メソッド
     public static func executeValidation(_ inputs:[String:String?]) -> String? {
         // 社員IDバリデーション
         if let invalidMessage = validate(input: inputs["id"], required: requiredItems["id"]!, length: idLength, format: idFormat) {
@@ -86,6 +87,7 @@ class ValidationEmployeeInfo {
         
         return nil
     }
+    
     // 固定長桁数のバリデート
     private static func validateLength(input:String, length:Int) -> Bool {
         if input.utf8.count == length { return true }
@@ -113,7 +115,7 @@ class ValidationEmployeeInfo {
     // 固定長桁数情報用
     private static func validate(input:String??, required:Bool, length:Int, format:String?) -> String? {
         if let input = input as? String {
-                        
+            
             if !validateLength(input: input, length: length) { return invalidLengthMessage }
             
             if let format = format {
@@ -128,7 +130,7 @@ class ValidationEmployeeInfo {
     // 可変長桁数情報用
     private static func validate(input:String??, required:Bool, maxLength:Int, format:String?) -> String? {
         if let input = input as? String {
-                        
+            
             if !validateExeedMaxLength(input: input, maxLength: maxLength) { return exceedMaxLengthMessage }
             
             if let format = format {
