@@ -56,32 +56,32 @@ class ValidationEmployeeInfo {
     // 外部からの呼び出し用メソッド
     public static func executeValidation(_ inputs:[String:String?]) -> String? {
         // 社員IDバリデーション
-        if let invalidMessage = validate(input: inputs["id"], required: requiredItems["id"]!, length: idLength, format: idFormat) {
+        if let invalidMessage = validate(input: inputs["id"], required: requiredItems["id"]!, length: idLength, format: idFormat, allowedDuplicate: allowedDuplicationItems["id"]!) {
             return invalidMessage.replacingOccurrences(of: "{item}", with: "社員ID").replacingOccurrences(of: "{length}", with: String(idLength))
         }
         
         // 社員名(姓)バリデーション
-        if let invalidMessage = validate(input: inputs["familyName"], required: requiredItems["familyName"]!, maxLength: familyNameMaxLength, format: familyNameFormat) {
+        if let invalidMessage = validate(input: inputs["familyName"], required: requiredItems["familyName"]!, maxLength: familyNameMaxLength, format: familyNameFormat, allowedDuplicate: allowedDuplicationItems["familyName"]!) {
             return invalidMessage.replacingOccurrences(of: "{item}", with: "社員名(姓)").replacingOccurrences(of: "{length}", with: String(familyNameMaxLength))
         }
         
         // 社員名(名)バリデーション
-        if let invalidMessage = validate(input: inputs["firstName"], required: requiredItems["firstName"]!, maxLength: firstNameMaxLength, format: firstNameFormat) {
+        if let invalidMessage = validate(input: inputs["firstName"], required: requiredItems["firstName"]!, maxLength: firstNameMaxLength, format: firstNameFormat, allowedDuplicate: allowedDuplicationItems["firstName"]!) {
             return invalidMessage.replacingOccurrences(of: "{item}", with: "社員名(名)").replacingOccurrences(of: "{length}", with: String(firstNameMaxLength))
         }
         
         // 所属セクションバリデーション
-        if let invalidMessage = validate(input: inputs["section"], required: requiredItems["section"]!, length: sectionLength, format: sectionFormat) {
+        if let invalidMessage = validate(input: inputs["section"], required: requiredItems["section"]!, length: sectionLength, format: sectionFormat, allowedDuplicate: allowedDuplicationItems["section"]!) {
             return invalidMessage.replacingOccurrences(of: "{item}", with: "所属セクション").replacingOccurrences(of: "{length}", with: String(sectionLength)).replacingOccurrences(of: "入力", with: "選択")
         }
         
         // メールアドレスバリデーション
-        if let invalidMessage = validate(input: inputs["mail"], required: requiredItems["mail"]!, maxLength: mailMaxLength, format: mailFormat) {
+        if let invalidMessage = validate(input: inputs["mail"], required: requiredItems["mail"]!, maxLength: mailMaxLength, format: mailFormat, allowedDuplicate: allowedDuplicationItems["mail"]!) {
             return invalidMessage.replacingOccurrences(of: "{item}", with: "メールアドレス").replacingOccurrences(of: "{length}", with: String(mailMaxLength))
         }
         
         // 性別バリデーション
-        if let invalidMessage = validate(input: inputs["gender"], required: requiredItems["gender"]!, length: genderLength, format: genderFormat) {
+        if let invalidMessage = validate(input: inputs["gender"], required: requiredItems["gender"]!, length: genderLength, format: genderFormat, allowedDuplicate: allowedDuplicationItems["gender"]!) {
             return invalidMessage.replacingOccurrences(of: "{item}", with: "性別").replacingOccurrences(of: "{length}", with: String(genderLength)).replacingOccurrences(of: "入力", with: "選択")
         }
         
@@ -101,7 +101,25 @@ class ValidationEmployeeInfo {
     }
     
     // 重複のバリデート
-    private static func validateDuplicate(input:String, terget:String) -> Bool {
+    private static func isDuplicate(input:String) -> Bool {
+        guard let storedEmployees = AccessCoreData.getStoredEmployee() else { return false }
+
+        if input.contains("@") {
+            // メールアドレスの重複確認
+            for emp in storedEmployees {
+                if emp.mail! == input {
+                    return true
+                }
+            }
+        } else {
+            // 社員IDの重複確認
+            for emp in storedEmployees {
+                if emp.employee_id! == input {
+                    return true
+                }
+            }
+        }
+        
         return false
     }
     
@@ -113,7 +131,7 @@ class ValidationEmployeeInfo {
     }
     
     // 固定長桁数情報用
-    private static func validate(input:String??, required:Bool, length:Int, format:String?) -> String? {
+    private static func validate(input:String??, required:Bool, length:Int, format:String?, allowedDuplicate:Bool) -> String? {
         if let input = input as? String {
             
             if !validateLength(input: input, length: length) { return invalidLengthMessage }
@@ -122,13 +140,15 @@ class ValidationEmployeeInfo {
                 if !validateFormat(input: input, format: format) { return invalidFormatMessage }
             }
             
+            if !allowedDuplicate && isDuplicate(input: input) { return duplicateMessage }
+            
         } else if required { return noInputMessage }
         
         return nil
     }
     
     // 可変長桁数情報用
-    private static func validate(input:String??, required:Bool, maxLength:Int, format:String?) -> String? {
+    private static func validate(input:String??, required:Bool, maxLength:Int, format:String?, allowedDuplicate:Bool) -> String? {
         if let input = input as? String {
             
             if !validateExeedMaxLength(input: input, maxLength: maxLength) { return exceedMaxLengthMessage }
@@ -137,6 +157,8 @@ class ValidationEmployeeInfo {
                 if !validateFormat(input: input, format: format) { return invalidFormatMessage }
             }
             
+            if !allowedDuplicate && isDuplicate(input: input) { return duplicateMessage }
+
         } else if required { return noInputMessage }
         
         return nil
