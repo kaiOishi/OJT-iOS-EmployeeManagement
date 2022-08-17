@@ -13,8 +13,8 @@ class ValidationEmployeeInfo {
     // 必須入力情報
     private static let requiredItems: [String:Bool] = [
         "id" : true,
+        "familyName" : true,
         "firstName" : true,
-        "lastName" : true,
         "section" : true,
         "mail" : true,
         "gender" : true
@@ -22,8 +22,8 @@ class ValidationEmployeeInfo {
     
     // 固定桁数・最大桁数
     private static let idLength = 10
+    private static let familyNameMaxLength = 25
     private static let firstNameMaxLength = 25
-    private static let lastNameMaxLength = 25
     private static let sectionLength = 1
     private static let mailMaxLength = 256
     private static let genderLength = 1
@@ -31,8 +31,8 @@ class ValidationEmployeeInfo {
     // 他社員のデータと重複してもよい情報
     private static let allowedDuplicationItems: [String:Bool] = [
         "id" : false,
+        "familyName" : true,
         "firstName" : true,
-        "lastName" : true,
         "section" : true,
         "mail" : false,
         "gender" : true
@@ -40,8 +40,8 @@ class ValidationEmployeeInfo {
     
     // 指定フォーマット
     private static let idFormat = "YZ[0-9]{8}"
+    private static let familyNameFormat: String? = nil
     private static let firstNameFormat: String? = nil
-    private static let lastNameFormat: String? = nil
     private static let sectionFormat = "[1-3]"
     private static let mailFormat = "^[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+$"
     private static let genderFormat = "[1-2]"
@@ -61,13 +61,13 @@ class ValidationEmployeeInfo {
         }
         
         // 社員名(姓)バリデーション
-        if let invalidMessage = validate(input: inputs["firstName"], required: requiredItems["firstName"]!, maxLength: firstNameMaxLength, format: firstNameFormat) {
-            return invalidMessage.replacingOccurrences(of: "{item}", with: "社員名(姓)").replacingOccurrences(of: "{length}", with: String(firstNameMaxLength))
+        if let invalidMessage = validate(input: inputs["familyName"], required: requiredItems["familyName"]!, maxLength: familyNameMaxLength, format: familyNameFormat) {
+            return invalidMessage.replacingOccurrences(of: "{item}", with: "社員名(姓)").replacingOccurrences(of: "{length}", with: String(familyNameMaxLength))
         }
         
         // 社員名(名)バリデーション
-        if let invalidMessage = validate(input: inputs["lastName"], required: requiredItems["lastName"]!, maxLength: lastNameMaxLength, format: lastNameFormat) {
-            return invalidMessage.replacingOccurrences(of: "{item}", with: "社員名(名)").replacingOccurrences(of: "{length}", with: String(lastNameMaxLength))
+        if let invalidMessage = validate(input: inputs["firstName"], required: requiredItems["firstName"]!, maxLength: firstNameMaxLength, format: firstNameFormat) {
+            return invalidMessage.replacingOccurrences(of: "{item}", with: "社員名(名)").replacingOccurrences(of: "{length}", with: String(firstNameMaxLength))
         }
         
         // 所属セクションバリデーション

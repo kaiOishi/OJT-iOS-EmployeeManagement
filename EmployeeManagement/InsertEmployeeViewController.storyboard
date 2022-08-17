@@ -298,8 +298,8 @@
                     </view>
                     <connections>
                         <outlet property="employeeIdField" destination="ebl-pP-ul8" id="eKQ-oi-ucO"/>
-                        <outlet property="firstNameField" destination="4Od-4s-bBb" id="GfI-4r-9Ib"/>
-                        <outlet property="lastNameField" destination="j5d-bu-5aM" id="fKJ-9o-0QT"/>
+                        <outlet property="familyNameField" destination="4Od-4s-bBb" id="GfI-4r-9Ib"/>
+                        <outlet property="firstNameField" destination="j5d-bu-5aM" id="fKJ-9o-0QT"/>
                         <outlet property="mailField" destination="toa-VJ-fZS" id="wPM-Nt-tkk"/>
                         <outlet property="manRadioButton" destination="V0T-hu-xaQ" id="5L8-jF-Fyy"/>
                         <outlet property="registerButton" destination="TBe-Qc-rJH" id="A75-4a-ygF"/>

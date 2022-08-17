@@ -9,8 +9,8 @@ import UIKit
 
 class InsertEmployeeViewController : UIViewController{
     @IBOutlet weak var employeeIdField: UITextField!
+    @IBOutlet weak var familyNameField: UITextField!
     @IBOutlet weak var firstNameField: UITextField!
-    @IBOutlet weak var lastNameField: UITextField!
     @IBOutlet weak var sectionField: UITextField!
     @IBOutlet weak var mailField: UITextField!
     @IBOutlet weak var manRadioButton: UIButton!
@@ -30,8 +30,8 @@ class InsertEmployeeViewController : UIViewController{
         backPreviousBarItem = UIBarButtonItem(title: "< 戻る", style: .done, target: self, action: #selector(goBackPreviuos(_:)))
         self.navigationItem.leftBarButtonItem = backPreviousBarItem
         employeeIdField.placeholder = "例）YZ12345678"
-        firstNameField.placeholder = "性"
-        lastNameField.placeholder = "名"
+        familyNameField.placeholder = "性"
+        firstNameField.placeholder = "名"
         mailField.placeholder = "例）taro_yaz@yaz.co.jp"
         
         sectionPicker.delegate = self
@@ -115,16 +115,16 @@ class InsertEmployeeViewController : UIViewController{
             inputs["id"] = self.employeeIdField.text
         }
         
+        if self.familyNameField.text == "" {
+            inputs["familyName"] = nil
+        } else {
+            inputs["familyName"] = self.familyNameField.text
+        }
+        
         if self.firstNameField.text == "" {
             inputs["firstName"] = nil
         } else {
             inputs["firstName"] = self.firstNameField.text
-        }
-        
-        if self.lastNameField.text == "" {
-            inputs["lastName"] = nil
-        } else {
-            inputs["lastName"] = self.lastNameField.text
         }
         
         if self.mailField.text == "" {
@@ -137,11 +137,28 @@ class InsertEmployeeViewController : UIViewController{
         let message = ValidationEmployeeInfo.executeValidation(inputs)
         
         if message != nil {
+            // 入力値に問題がある場合
             let alert = UIAlertController(title: message!, message: nil, preferredStyle: .alert)
             let ok = UIAlertAction(title: "OK", style: .default) { (action) in
                 self.dismiss(animated: true, completion: nil)
             }
             alert.addAction(ok)
+            present(alert, animated: true, completion: nil)
+        } else {
+            // 入力値に問題ない場合
+            let sectionId = Int(inputs["section"]!!)
+            let genderId = Int(inputs["gender"]!!)
+            let emp = EmployeeInfo(empId: inputs["id"]!!, familyName: inputs["familyName"]!!, firstName: inputs["firstName"]!!, sectionId: sectionId!, mail: inputs["mail"]!!, gender: genderId!)
+            
+            AccessCoreData.storeEmployee(newEmployeeInfo: emp)
+            
+            let alert = UIAlertController(title: "データを登録しました", message: nil, preferredStyle: .alert)
+            let stored = UIAlertAction(title: "OK", style: .default) { (action) in
+                self.dismiss(animated: true, completion: nil)
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+            
+            alert.addAction(stored)
             present(alert, animated: true, completion: nil)
         }
     }
