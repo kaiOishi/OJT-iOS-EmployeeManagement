@@ -27,20 +27,46 @@ class AccessCoreData {
         return nil
     }
     
-    static public func storeEmployee(newEmployeeInfo: EmployeeInfo) {
+    static public func storeEmployee(id: String, familyName: String, firstName: String, section: String, mail: String, gender: String) {
         let newEmployee = Employee(context: managedContext)
 
-        newEmployee.id = newEmployeeInfo.id
-        newEmployee.employee_id = newEmployeeInfo.employeeId
-        newEmployee.family_name = newEmployeeInfo.familyName
-        newEmployee.first_name = newEmployeeInfo.firstName
-        newEmployee.section_id = Int16(newEmployeeInfo.sectionId)
-        newEmployee.mail = newEmployeeInfo.mail
-        newEmployee.gender_id = Int16(newEmployeeInfo.genderId)
+        newEmployee.id = Int64(id.replacingOccurrences(of: "YZ", with: ""))!
+        newEmployee.employee_id = id
+        newEmployee.family_name = familyName
+        newEmployee.first_name = firstName
+        newEmployee.section_id = Int16(section)!
+        newEmployee.mail = mail
+        newEmployee.gender_id = Int16(gender)!
         
         guard var storedEmployees = getStoredEmployee() else { return }
         
         storedEmployees.append(newEmployee)
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+}
+
+extension Employee {
+    func meansSectionName() -> String {
+        switch self.section_id {
+        case 1:
+            return "シス開"
+        case 2:
+            return "グロカル"
+        case 3:
+            return "ビジソル"
+        default:
+            return "セクション名"
+        }
+    }
+    
+    func meansGender() -> String {
+        switch self.section_id {
+        case 1:
+            return "男性"
+        case 2:
+            return "女性"
+        default:
+            return "性別"
+        }
     }
 }

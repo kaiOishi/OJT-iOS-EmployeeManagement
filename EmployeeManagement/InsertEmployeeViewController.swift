@@ -145,12 +145,8 @@ class InsertEmployeeViewController : UIViewController{
             alert.addAction(ok)
             present(alert, animated: true, completion: nil)
         } else {
-            // 入力値に問題ない場合
-            let sectionId = Int(inputs["section"]!!)
-            let genderId = Int(inputs["gender"]!!)
-            let emp = EmployeeInfo(empId: inputs["id"]!!, familyName: inputs["familyName"]!!, firstName: inputs["firstName"]!!, sectionId: sectionId!, mail: inputs["mail"]!!, gender: genderId!)
-            
-            AccessCoreData.storeEmployee(newEmployeeInfo: emp)
+            // 入力値に問題ない場合            
+            AccessCoreData.storeEmployee(id: inputs["id"]!!, familyName: inputs["familyName"]!!, firstName: inputs["firstName"]!!, section: inputs["section"]!!, mail: inputs["mail"]!!, gender: inputs["gender"]!!)
             
             let alert = UIAlertController(title: "データを登録しました", message: nil, preferredStyle: .alert)
             let stored = UIAlertAction(title: "OK", style: .default) { (action) in

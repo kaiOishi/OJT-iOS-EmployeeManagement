@@ -12,7 +12,7 @@ class EmployeeListViewController: UIViewController, UITabBarDelegate {
     @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var employeeTable: UITableView!
     
-    var storedEmployee: [EmployeeInfo] = []
+    var storedEmployee: [Employee] = []
     private let employeeList = UITabBarItem(title: "社員一覧", image: nil, tag: 1)
     private let addNewEmployee = UITabBarItem(title: "社員登録", image: nil, tag: 2)
     
@@ -30,21 +30,15 @@ class EmployeeListViewController: UIViewController, UITabBarDelegate {
         employeeTable.register(nib, forCellReuseIdentifier: EmployeeTableViewCell.cellIdentifier)
         employeeTable.rowHeight = UITableView.automaticDimension
         
-        let stored = AccessCoreData.getStoredEmployee()!
-        for emp in stored {
-            let empInfo = EmployeeInfo(employee: emp)
-            storedEmployee.append(empInfo)
-        }
+        if AccessCoreData.getStoredEmployee() == nil { return }
+        storedEmployee = AccessCoreData.getStoredEmployee()!
+        storedEmployee.sort(by: {$0.id < $1.id})
     }
 
     override func viewDidAppear(_ animated: Bool) {
-        let stored = AccessCoreData.getStoredEmployee()!
-        storedEmployee = []
-        for emp in stored {
-            let empInfo = EmployeeInfo(employee: emp)
-            storedEmployee.append(empInfo)
-        }
-        
+        if AccessCoreData.getStoredEmployee() == nil { return }
+        storedEmployee = AccessCoreData.getStoredEmployee()!
+        storedEmployee.sort(by: {$0.id < $1.id})
         employeeTable.reloadData()
     }
     
