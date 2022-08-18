@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G730" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Employee" representedClassName="Employee" syncable="YES" codeGenerationType="class">
-        <attribute name="employee_id" attributeType="String"/>
-        <attribute name="family_name" attributeType="String"/>
-        <attribute name="first_name" attributeType="String"/>
-        <attribute name="gender_id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="employee_id" attributeType="String" minValueString="10" maxValueString="10"/>
+        <attribute name="family_name" attributeType="String" minValueString="1" maxValueString="25"/>
+        <attribute name="first_name" attributeType="String" minValueString="1" maxValueString="25"/>
+        <attribute name="gender_id" attributeType="Integer 16" minValueString="1" maxValueString="2" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="mail" attributeType="String"/>
-        <attribute name="section_id" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="mail" attributeType="String" minValueString="3" maxValueString="256"/>
+        <attribute name="section_id" attributeType="Integer 16" minValueString="1" maxValueString="3" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
         <element name="Employee" positionX="-63" positionY="-18" width="128" height="134"/>
