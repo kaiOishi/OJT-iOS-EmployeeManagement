@@ -7,7 +7,7 @@
 
 import UIKit
 
-class InsertEmployeeViewController : UIViewController{
+class EditEmployeeViewController : UIViewController{
     @IBOutlet weak var employeeIdField: UITextField!
     @IBOutlet weak var familyNameField: UITextField!
     @IBOutlet weak var firstNameField: UITextField!
@@ -24,6 +24,8 @@ class InsertEmployeeViewController : UIViewController{
     private var genderSelection:Bool?
     // 入力値を集約するDictionary
     private var inputs:[String:String?] = [:]
+    
+    var storedEmployee: Employee?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +48,30 @@ class InsertEmployeeViewController : UIViewController{
         sectionField.inputView = self.sectionPicker
         sectionField.inputAccessoryView = toolbar
         
-        registerButton.backgroundColor = .systemGray
-        registerButton.titleLabel?.textColor = .black
-        
         NotificationCenter.default.addObserver(self,selector: #selector(orientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
+    
+        if let storedEmployee = storedEmployee {
+            self.employeeIdField.text = storedEmployee.employee_id
+            self.familyNameField.text = storedEmployee.family_name
+            self.firstNameField.text = storedEmployee.first_name
+            self.sectionField.text = storedEmployee.sectionName()
+            self.sectionPicker.selectRow(Int(storedEmployee.section_id), inComponent: 0, animated: false)
+            self.mailField.text = storedEmployee.mail
+            
+            if storedEmployee.gender() == "男性" {
+                manRadioButton.setTitle("◉", for: .normal)
+                womanRadioButton.setTitle("○", for: .normal)
+                genderSelection = true
+            } else {
+                womanRadioButton.setTitle("◉", for: .normal)
+                manRadioButton.setTitle("○", for: .normal)
+                genderSelection = false
+            }
+            
+            self.employeeIdField.isEnabled = false
+            self.registerButton.setTitle("更新", for: .normal)
+            done()
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -70,7 +92,7 @@ class InsertEmployeeViewController : UIViewController{
     }
     
     @objc func goBackPreviuos(_ sender: UIBarButtonItem) {
-        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func done() {
@@ -98,14 +120,12 @@ class InsertEmployeeViewController : UIViewController{
         self.genderSelection = true
         manRadioButton.setTitle("◉", for: .normal)
         womanRadioButton.setTitle("○", for: .normal)
-        inputs["gender"] = "1"
     }
     
     @IBAction func tappedWoman(_ sender: Any) {
         self.genderSelection = false
         womanRadioButton.setTitle("◉", for: .normal)
         manRadioButton.setTitle("○", for: .normal)
-        inputs["gender"] = "2"
     }
     
     @IBAction func register(_ sender: Any) {
@@ -113,8 +133,17 @@ class InsertEmployeeViewController : UIViewController{
         inputs["familyName"] = self.familyNameField.text == "" ? nil : self.familyNameField.text
         inputs["firstName"] = self.firstNameField.text == "" ? nil : self.firstNameField.text
         inputs["mail"] = self.mailField.text == "" ? nil : self.mailField.text
+        
+        if let genderSelection = genderSelection {
+            inputs["gender"] = genderSelection ? "1" : "2"
+        }
         // バリデーションチェックを行い、問題なければnil、問題があればエラーメッセージが返る
-        let message = ValidationEmployeeInfo.executeValidation(inputs)
+        var message:String?
+        if storedEmployee == nil {
+            message = ValidationEmployeeInfo.executeValidation(inputs, forEdit: false)
+        } else {
+            message = ValidationEmployeeInfo.executeValidation(inputs, forEdit: true)
+        }
         
         if message != nil {
             // 入力値に問題がある場合
@@ -126,20 +155,27 @@ class InsertEmployeeViewController : UIViewController{
             present(alert, animated: true, completion: nil)
         } else {
             // 入力値に問題ない場合
-            let storeResult = AccessCoreData.storeEmployee(id: inputs["id"]!!, familyName: inputs["familyName"]!!, firstName: inputs["firstName"]!!, section: inputs["section"]!!, mail: inputs["mail"]!!, gender: inputs["gender"]!!)
+            var storeResult :Bool = false
+            
+            if storedEmployee == nil {
+                storeResult = AccessCoreData.storeEmployee(id: inputs["id"]!!, familyName: inputs["familyName"]!!, firstName: inputs["firstName"]!!, section: inputs["section"]!!, mail: inputs["mail"]!!, gender: inputs["gender"]!!)
+            } else {
+                storeResult = AccessCoreData.updateEmployee(id: inputs["id"]!!, familyName: inputs["familyName"]!!, firstName: inputs["firstName"]!!, section: inputs["section"]!!, mail: inputs["mail"]!!, gender: inputs["gender"]!!)
+            }
+            
+            let purpose = self.storedEmployee == nil ? "登録" : "更新"
             
             if storeResult {
-                let alert = UIAlertController(title: "データを登録しました", message: nil, preferredStyle: .alert)
+                let alert = UIAlertController(title: "データを\(purpose)しました", message: nil, preferredStyle: .alert)
                 let stored = UIAlertAction(title: "OK", style: .default) { (action) in
                     self.dismiss(animated: true, completion: nil)
                     self.navigationController?.popToRootViewController(animated: true)
-                    
                 }
                 
                 alert.addAction(stored)
                 present(alert, animated: true, completion: nil)
             } else {
-                let alert = UIAlertController(title: "データ登録に失敗しました", message: nil, preferredStyle: .alert)
+                let alert = UIAlertController(title: "データ\(purpose)に失敗しました", message: nil, preferredStyle: .alert)
                 let stored = UIAlertAction(title: "OK", style: .default) { (action) in
                     self.dismiss(animated: true, completion: nil)
                 }
@@ -148,11 +184,12 @@ class InsertEmployeeViewController : UIViewController{
                 present(alert, animated: true, completion: nil)
             }
         }
+        
     }
     
 }
 
-extension InsertEmployeeViewController:UIPickerViewDelegate, UIPickerViewDataSource {
+extension EditEmployeeViewController:UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
