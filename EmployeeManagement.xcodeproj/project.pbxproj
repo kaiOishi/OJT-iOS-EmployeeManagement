@@ -20,11 +20,9 @@
 		E192622E2898F8C90010FD50 /* EmployeeManagementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E192622D2898F8C90010FD50 /* EmployeeManagementTests.swift */; };
 		E19262382898F8C90010FD50 /* EmployeeManagementUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19262372898F8C90010FD50 /* EmployeeManagementUITests.swift */; };
 		E192623A2898F8C90010FD50 /* EmployeeManagementUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19262392898F8C90010FD50 /* EmployeeManagementUITestsLaunchTests.swift */; };
-		E1926247289904FD0010FD50 /* EditEmployeeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1926246289904FD0010FD50 /* EditEmployeeViewController.storyboard */; };
-		E1926249289907250010FD50 /* EditEmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1926248289907250010FD50 /* EditEmployeeViewController.swift */; };
+		E1926247289904FD0010FD50 /* InsertEmployeeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1926246289904FD0010FD50 /* InsertEmployeeViewController.storyboard */; };
+		E1926249289907250010FD50 /* InsertEmployeeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1926248289907250010FD50 /* InsertEmployeeViewController.swift */; };
 		E1B3C8C6289CAA4D00BB6838 /* ValidationEmployeeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B3C8C5289CAA4D00BB6838 /* ValidationEmployeeInfo.swift */; };
-		E1B94F5228B86E200090CA42 /* EmployeeInformationViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1B94F5128B86E1F0090CA42 /* EmployeeInformationViewController.storyboard */; };
-		E1B94F5428B86EC60090CA42 /* EmployeeInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B94F5328B86EC60090CA42 /* EmployeeInformationViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,11 +60,9 @@
 		E19262332898F8C90010FD50 /* EmployeeManagementUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmployeeManagementUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E19262372898F8C90010FD50 /* EmployeeManagementUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeManagementUITests.swift; sourceTree = "<group>"; };
 		E19262392898F8C90010FD50 /* EmployeeManagementUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeManagementUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		E1926246289904FD0010FD50 /* EditEmployeeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditEmployeeViewController.storyboard; sourceTree = "<group>"; };
-		E1926248289907250010FD50 /* EditEmployeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEmployeeViewController.swift; sourceTree = "<group>"; };
+		E1926246289904FD0010FD50 /* InsertEmployeeViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = InsertEmployeeViewController.storyboard; sourceTree = "<group>"; };
+		E1926248289907250010FD50 /* InsertEmployeeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertEmployeeViewController.swift; sourceTree = "<group>"; };
 		E1B3C8C5289CAA4D00BB6838 /* ValidationEmployeeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationEmployeeInfo.swift; sourceTree = "<group>"; };
-		E1B94F5128B86E1F0090CA42 /* EmployeeInformationViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EmployeeInformationViewController.storyboard; sourceTree = "<group>"; };
-		E1B94F5328B86EC60090CA42 /* EmployeeInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeInformationViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,15 +116,13 @@
 				E19262132898F8C40010FD50 /* AppDelegate.swift */,
 				E19262152898F8C40010FD50 /* SceneDelegate.swift */,
 				E19262172898F8C40010FD50 /* EmployeeListViewController.swift */,
-				E1B94F5328B86EC60090CA42 /* EmployeeInformationViewController.swift */,
-				E1926248289907250010FD50 /* EditEmployeeViewController.swift */,
+				E1926248289907250010FD50 /* InsertEmployeeViewController.swift */,
 				E1B3C8C5289CAA4D00BB6838 /* ValidationEmployeeInfo.swift */,
 				E17BA45928AB612D00BCE092 /* AccessCoreData.swift */,
 				E17BA45F28AB844300BCE092 /* EmployeeTableViewCell.swift */,
-				E1B94F5128B86E1F0090CA42 /* EmployeeInformationViewController.storyboard */,
 				E19262192898F8C40010FD50 /* EmployeeListViewController.storyboard */,
 				E17BA45D28AB7E7D00BCE092 /* EmployeeTableViewCell.xib */,
-				E1926246289904FD0010FD50 /* EditEmployeeViewController.storyboard */,
+				E1926246289904FD0010FD50 /* InsertEmployeeViewController.storyboard */,
 				E192621F2898F8C80010FD50 /* Assets.xcassets */,
 				E19262212898F8C80010FD50 /* LaunchScreen.storyboard */,
 				E19262242898F8C80010FD50 /* Info.plist */,
@@ -261,8 +255,7 @@
 				E19262232898F8C80010FD50 /* LaunchScreen.storyboard in Resources */,
 				E17BA45E28AB7E7D00BCE092 /* EmployeeTableViewCell.xib in Resources */,
 				E19262202898F8C80010FD50 /* Assets.xcassets in Resources */,
-				E1926247289904FD0010FD50 /* EditEmployeeViewController.storyboard in Resources */,
-				E1B94F5228B86E200090CA42 /* EmployeeInformationViewController.storyboard in Resources */,
+				E1926247289904FD0010FD50 /* InsertEmployeeViewController.storyboard in Resources */,
 				E192621B2898F8C40010FD50 /* EmployeeListViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,10 +283,9 @@
 			files = (
 				E192621E2898F8C50010FD50 /* EmployeeManagement.xcdatamodeld in Sources */,
 				E19262182898F8C40010FD50 /* EmployeeListViewController.swift in Sources */,
-				E1926249289907250010FD50 /* EditEmployeeViewController.swift in Sources */,
+				E1926249289907250010FD50 /* InsertEmployeeViewController.swift in Sources */,
 				E17BA45A28AB612D00BCE092 /* AccessCoreData.swift in Sources */,
 				E17BA46028AB844300BCE092 /* EmployeeTableViewCell.swift in Sources */,
-				E1B94F5428B86EC60090CA42 /* EmployeeInformationViewController.swift in Sources */,
 				E19262142898F8C40010FD50 /* AppDelegate.swift in Sources */,
 				E1B3C8C6289CAA4D00BB6838 /* ValidationEmployeeInfo.swift in Sources */,
 				E19262162898F8C40010FD50 /* SceneDelegate.swift in Sources */,

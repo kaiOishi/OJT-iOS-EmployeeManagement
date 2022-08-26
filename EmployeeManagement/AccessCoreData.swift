@@ -42,23 +42,6 @@ class AccessCoreData {
         storedEmployees.append(newEmployee)
         return (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
-    
-    static public func updateEmployee(id: String, familyName: String, firstName: String, section: String, mail: String, gender: String) -> Bool {
-        let dataCondition = NSFetchRequest<NSFetchRequestResult>(entityName: "Employee")
-        let predicate = NSPredicate(format: "employee_id = %@", id)
-        dataCondition.predicate = predicate
-        
-        do {
-            let results = try self.managedContext.fetch(dataCondition)
-            for emps in results {
-                self.managedContext.delete(emps as! Employee)
-            }
-            
-            return self.storeEmployee(id: id, familyName: familyName, firstName: firstName, section: section, mail: mail, gender: gender)
-        } catch {
-            return false
-        }
-    }
 }
 
 extension Employee {
@@ -76,7 +59,7 @@ extension Employee {
     }
     
     func gender() -> String {
-        switch self.gender_id {
+        switch self.section_id {
         case 1:
             return "男性"
         case 2:

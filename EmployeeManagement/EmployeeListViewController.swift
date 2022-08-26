@@ -18,7 +18,7 @@ class EmployeeListViewController: UIViewController, UITabBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        // Do any additional setup after loading the view.
         self.title = "社員一覧"
         tabBar.items = [employeeList, addNewEmployee]
         tabBar.delegate = self
@@ -44,8 +44,8 @@ class EmployeeListViewController: UIViewController, UITabBarDelegate {
     
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if item.tag == 2 {
-            let storyBoard = UIStoryboard(name: "EditEmployeeViewController", bundle: nil)
-            let nextVC = storyBoard.instantiateViewController(withIdentifier: "EditEmployeeViewController")
+            let storyBoard = UIStoryboard(name: "InsertEmployeeViewController", bundle: nil)
+            let nextVC = storyBoard.instantiateViewController(withIdentifier: "InsertEmployeeViewController")
             navigationController?.pushViewController(nextVC, animated: true)
             tabBar.selectedItem = employeeList
         }
@@ -62,15 +62,6 @@ extension EmployeeListViewController: UITableViewDelegate, UITableViewDataSource
         cell.setup(employee: storedEmployee[indexPath.row])
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedEmployee = self.storedEmployee[indexPath.row]
-        
-        let storyBoard = UIStoryboard(name: "EmployeeInformationViewController", bundle: nil)
-        let nextVC = storyBoard.instantiateViewController(withIdentifier: "EmployeeInformationViewController") as! EmployeeInformationViewController
-        nextVC.selectedEmployee = selectedEmployee
-        navigationController?.pushViewController(nextVC, animated: true)
     }
     
 }

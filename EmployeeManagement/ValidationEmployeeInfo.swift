@@ -54,12 +54,10 @@ class ValidationEmployeeInfo {
     private static let invalidFormatMessage = "{item}を\n正しく入力してください"
     
     // 外部からの呼び出し用メソッド
-    public static func executeValidation(_ inputs:[String:String?], forEdit: Bool) -> String? {
-        if !forEdit {
-            // 社員IDバリデーション
-            if let invalidMessage = validate(input: inputs["id"], required: requiredItems["id"]!, length: idLength, format: idFormat, allowedDuplicate: allowedDuplicationItems["id"]!) {
-                return invalidMessage.replacingOccurrences(of: "{item}", with: "社員ID").replacingOccurrences(of: "{length}", with: String(idLength))
-            }
+    public static func executeValidation(_ inputs:[String:String?]) -> String? {
+        // 社員IDバリデーション
+        if let invalidMessage = validate(input: inputs["id"], required: requiredItems["id"]!, length: idLength, format: idFormat, allowedDuplicate: allowedDuplicationItems["id"]!) {
+            return invalidMessage.replacingOccurrences(of: "{item}", with: "社員ID").replacingOccurrences(of: "{length}", with: String(idLength))
         }
         
         // 社員名(姓)バリデーション
@@ -78,15 +76,10 @@ class ValidationEmployeeInfo {
         }
         
         // メールアドレスバリデーション
-        if forEdit {
-            if let invalidMessage = validateMailForEdit(mail: inputs["mail"], id: inputs["id"]!!, required: requiredItems["mail"]!, maxLength: mailMaxLength, format: mailFormat, allowedDuplicate: allowedDuplicationItems["mail"]!) {
-                return invalidMessage.replacingOccurrences(of: "{item}", with: "メールアドレス").replacingOccurrences(of: "{length}", with: String(mailMaxLength))
-            }
-        } else {
-            if let invalidMessage = validate(input: inputs["mail"], required: requiredItems["mail"]!, maxLength: mailMaxLength, format: mailFormat, allowedDuplicate: allowedDuplicationItems["mail"]!) {
-                return invalidMessage.replacingOccurrences(of: "{item}", with: "メールアドレス").replacingOccurrences(of: "{length}", with: String(mailMaxLength))
-            }
+        if let invalidMessage = validate(input: inputs["mail"], required: requiredItems["mail"]!, maxLength: mailMaxLength, format: mailFormat, allowedDuplicate: allowedDuplicationItems["mail"]!) {
+            return invalidMessage.replacingOccurrences(of: "{item}", with: "メールアドレス").replacingOccurrences(of: "{length}", with: String(mailMaxLength))
         }
+        
         // 性別バリデーション
         if let invalidMessage = validate(input: inputs["gender"], required: requiredItems["gender"]!, length: genderLength, format: genderFormat, allowedDuplicate: allowedDuplicationItems["gender"]!) {
             return invalidMessage.replacingOccurrences(of: "{item}", with: "性別").replacingOccurrences(of: "{length}", with: String(genderLength)).replacingOccurrences(of: "入力", with: "選択")
@@ -169,29 +162,5 @@ class ValidationEmployeeInfo {
         guard let regex = try? NSRegularExpression(pattern: format) else { return false }
         let matches = regex.matches(in: input, range: NSRange(location: 0, length: input.utf8.count))
         return matches.count > 0
-    }
-    
-    // 社員情報編集時のメールアドレスのバリデーション
-    private static func validateMailForEdit(mail:String??, id:String, required:Bool, maxLength:Int, format:String?, allowedDuplicate:Bool) -> String? {
-        if let mail = mail as? String {
-            
-            if !validateExeedMaxLength(input: mail, maxLength: maxLength) { return exceedMaxLengthMessage }
-            
-            if let format = format {
-                if !validateFormat(input: mail, format: format) { return invalidFormatMessage }
-            }
-            
-            if !allowedDuplicate {
-                let storedEmployees = AccessCoreData.getStoredEmployee()!
-                    
-                for emp in storedEmployees {
-                    if emp.mail == mail && emp.employee_id! != id {
-                        return duplicateMessage
-                    }
-                }
-            }
-        } else if required { return noInputMessage }
-        
-        return nil
     }
 }
