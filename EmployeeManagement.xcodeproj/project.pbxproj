@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		E17BA45A28AB612D00BCE092 /* AccessCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17BA45928AB612D00BCE092 /* AccessCoreData.swift */; };
-		E17BA45C28AB6C4B00BCE092 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17BA45B28AB6C4B00BCE092 /* Employee.swift */; };
 		E17BA45E28AB7E7D00BCE092 /* EmployeeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E17BA45D28AB7E7D00BCE092 /* EmployeeTableViewCell.xib */; };
 		E17BA46028AB844300BCE092 /* EmployeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17BA45F28AB844300BCE092 /* EmployeeTableViewCell.swift */; };
 		E19262142898F8C40010FD50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19262132898F8C40010FD50 /* AppDelegate.swift */; };
@@ -45,7 +44,6 @@
 
 /* Begin PBXFileReference section */
 		E17BA45928AB612D00BCE092 /* AccessCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessCoreData.swift; sourceTree = "<group>"; };
-		E17BA45B28AB6C4B00BCE092 /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
 		E17BA45D28AB7E7D00BCE092 /* EmployeeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmployeeTableViewCell.xib; sourceTree = "<group>"; };
 		E17BA45F28AB844300BCE092 /* EmployeeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeTableViewCell.swift; sourceTree = "<group>"; };
 		E19262102898F8C40010FD50 /* EmployeeManagement.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EmployeeManagement.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,7 +119,6 @@
 				E1926248289907250010FD50 /* InsertEmployeeViewController.swift */,
 				E1B3C8C5289CAA4D00BB6838 /* ValidationEmployeeInfo.swift */,
 				E17BA45928AB612D00BCE092 /* AccessCoreData.swift */,
-				E17BA45B28AB6C4B00BCE092 /* Employee.swift */,
 				E17BA45F28AB844300BCE092 /* EmployeeTableViewCell.swift */,
 				E19262192898F8C40010FD50 /* EmployeeListViewController.storyboard */,
 				E17BA45D28AB7E7D00BCE092 /* EmployeeTableViewCell.xib */,
@@ -285,7 +282,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E192621E2898F8C50010FD50 /* EmployeeManagement.xcdatamodeld in Sources */,
-				E17BA45C28AB6C4B00BCE092 /* Employee.swift in Sources */,
 				E19262182898F8C40010FD50 /* EmployeeListViewController.swift in Sources */,
 				E1926249289907250010FD50 /* InsertEmployeeViewController.swift in Sources */,
 				E17BA45A28AB612D00BCE092 /* AccessCoreData.swift in Sources */,

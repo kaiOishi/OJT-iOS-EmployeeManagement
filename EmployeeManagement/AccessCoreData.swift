@@ -27,7 +27,7 @@ class AccessCoreData {
         return nil
     }
     
-    static public func storeEmployee(id: String, familyName: String, firstName: String, section: String, mail: String, gender: String) {
+    static public func storeEmployee(id: String, familyName: String, firstName: String, section: String, mail: String, gender: String) -> Bool {
         let newEmployee = Employee(context: managedContext)
 
         newEmployee.id = Int64(id.replacingOccurrences(of: "YZ", with: ""))!
@@ -38,15 +38,14 @@ class AccessCoreData {
         newEmployee.mail = mail
         newEmployee.gender_id = Int16(gender)!
         
-        guard var storedEmployees = getStoredEmployee() else { return }
-        
+        guard var storedEmployees = getStoredEmployee() else { return  false }
         storedEmployees.append(newEmployee)
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        return (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
 }
 
 extension Employee {
-    func meansSectionName() -> String {
+    func sectionName() -> String {
         switch self.section_id {
         case 1:
             return "シス開"
@@ -59,7 +58,7 @@ extension Employee {
         }
     }
     
-    func meansGender() -> String {
+    func gender() -> String {
         switch self.section_id {
         case 1:
             return "男性"

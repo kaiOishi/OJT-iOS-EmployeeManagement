@@ -48,7 +48,7 @@ class InsertEmployeeViewController : UIViewController{
         
         registerButton.backgroundColor = .systemGray
         registerButton.titleLabel?.textColor = .black
-                
+        
         NotificationCenter.default.addObserver(self,selector: #selector(orientationChanged), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
@@ -109,30 +109,10 @@ class InsertEmployeeViewController : UIViewController{
     }
     
     @IBAction func register(_ sender: Any) {
-        if self.employeeIdField.text == "" {
-            inputs["id"] = nil
-        } else {
-            inputs["id"] = self.employeeIdField.text
-        }
-        
-        if self.familyNameField.text == "" {
-            inputs["familyName"] = nil
-        } else {
-            inputs["familyName"] = self.familyNameField.text
-        }
-        
-        if self.firstNameField.text == "" {
-            inputs["firstName"] = nil
-        } else {
-            inputs["firstName"] = self.firstNameField.text
-        }
-        
-        if self.mailField.text == "" {
-            inputs["mail"] = nil
-        } else {
-            inputs["mail"] = self.mailField.text
-        }
-        
+        inputs["id"] = self.employeeIdField.text == "" ? nil : self.employeeIdField.text
+        inputs["familyName"] = self.familyNameField.text == "" ? nil : self.familyNameField.text
+        inputs["firstName"] = self.firstNameField.text == "" ? nil : self.firstNameField.text
+        inputs["mail"] = self.mailField.text == "" ? nil : self.mailField.text
         // バリデーションチェックを行い、問題なければnil、問題があればエラーメッセージが返る
         let message = ValidationEmployeeInfo.executeValidation(inputs)
         
@@ -145,17 +125,28 @@ class InsertEmployeeViewController : UIViewController{
             alert.addAction(ok)
             present(alert, animated: true, completion: nil)
         } else {
-            // 入力値に問題ない場合            
-            AccessCoreData.storeEmployee(id: inputs["id"]!!, familyName: inputs["familyName"]!!, firstName: inputs["firstName"]!!, section: inputs["section"]!!, mail: inputs["mail"]!!, gender: inputs["gender"]!!)
+            // 入力値に問題ない場合
+            let storeResult = AccessCoreData.storeEmployee(id: inputs["id"]!!, familyName: inputs["familyName"]!!, firstName: inputs["firstName"]!!, section: inputs["section"]!!, mail: inputs["mail"]!!, gender: inputs["gender"]!!)
             
-            let alert = UIAlertController(title: "データを登録しました", message: nil, preferredStyle: .alert)
-            let stored = UIAlertAction(title: "OK", style: .default) { (action) in
-                self.dismiss(animated: true, completion: nil)
-                self.navigationController?.popToRootViewController(animated: true)
+            if storeResult {
+                let alert = UIAlertController(title: "データを登録しました", message: nil, preferredStyle: .alert)
+                let stored = UIAlertAction(title: "OK", style: .default) { (action) in
+                    self.dismiss(animated: true, completion: nil)
+                    self.navigationController?.popToRootViewController(animated: true)
+                    
+                }
+                
+                alert.addAction(stored)
+                present(alert, animated: true, completion: nil)
+            } else {
+                let alert = UIAlertController(title: "データ登録に失敗しました", message: nil, preferredStyle: .alert)
+                let stored = UIAlertAction(title: "OK", style: .default) { (action) in
+                    self.dismiss(animated: true, completion: nil)
+                }
+                
+                alert.addAction(stored)
+                present(alert, animated: true, completion: nil)
             }
-            
-            alert.addAction(stored)
-            present(alert, animated: true, completion: nil)
         }
     }
     

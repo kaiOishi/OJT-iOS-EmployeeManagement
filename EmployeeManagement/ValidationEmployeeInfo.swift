@@ -88,6 +88,40 @@ class ValidationEmployeeInfo {
         return nil
     }
     
+    // 固定長桁数情報用
+    private static func validate(input:String??, required:Bool, length:Int, format:String?, allowedDuplicate:Bool) -> String? {
+        if let input = input as? String {
+            
+            if !validateLength(input: input, length: length) { return invalidLengthMessage }
+            
+            if let format = format {
+                if !validateFormat(input: input, format: format) { return invalidFormatMessage }
+            }
+            
+            if !allowedDuplicate && isDuplicate(input: input) { return duplicateMessage }
+            
+        } else if required { return noInputMessage }
+        
+        return nil
+    }
+    
+    // 可変長桁数情報用
+    private static func validate(input:String??, required:Bool, maxLength:Int, format:String?, allowedDuplicate:Bool) -> String? {
+        if let input = input as? String {
+            
+            if !validateExeedMaxLength(input: input, maxLength: maxLength) { return exceedMaxLengthMessage }
+            
+            if let format = format {
+                if !validateFormat(input: input, format: format) { return invalidFormatMessage }
+            }
+            
+            if !allowedDuplicate && isDuplicate(input: input) { return duplicateMessage }
+
+        } else if required { return noInputMessage }
+        
+        return nil
+    }
+    
     // 固定長桁数のバリデート
     private static func validateLength(input:String, length:Int) -> Bool {
         if input.utf8.count == length { return true }
@@ -128,39 +162,5 @@ class ValidationEmployeeInfo {
         guard let regex = try? NSRegularExpression(pattern: format) else { return false }
         let matches = regex.matches(in: input, range: NSRange(location: 0, length: input.utf8.count))
         return matches.count > 0
-    }
-    
-    // 固定長桁数情報用
-    private static func validate(input:String??, required:Bool, length:Int, format:String?, allowedDuplicate:Bool) -> String? {
-        if let input = input as? String {
-            
-            if !validateLength(input: input, length: length) { return invalidLengthMessage }
-            
-            if let format = format {
-                if !validateFormat(input: input, format: format) { return invalidFormatMessage }
-            }
-            
-            if !allowedDuplicate && isDuplicate(input: input) { return duplicateMessage }
-            
-        } else if required { return noInputMessage }
-        
-        return nil
-    }
-    
-    // 可変長桁数情報用
-    private static func validate(input:String??, required:Bool, maxLength:Int, format:String?, allowedDuplicate:Bool) -> String? {
-        if let input = input as? String {
-            
-            if !validateExeedMaxLength(input: input, maxLength: maxLength) { return exceedMaxLengthMessage }
-            
-            if let format = format {
-                if !validateFormat(input: input, format: format) { return invalidFormatMessage }
-            }
-            
-            if !allowedDuplicate && isDuplicate(input: input) { return duplicateMessage }
-
-        } else if required { return noInputMessage }
-        
-        return nil
     }
 }
