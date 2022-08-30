@@ -35,6 +35,7 @@ class EmployeeInformationViewController : UIViewController {
         navigationController?.pushViewController(nextVC, animated: true)
     }
     
+    
     @IBAction func didTapDeleteButton(_ sender: Any) {
         var deleteResult = false
         let confirm = UIAlertController(title: "データを削除します\nよろしいですか？", message: nil, preferredStyle: .alert)
