@@ -13,6 +13,7 @@ class EmployeeListViewController: UIViewController, UITabBarDelegate {
     @IBOutlet weak var employeeTable: UITableView!
     
     var storedEmployee: [Employee] = []
+    var employeeCount: Int!
     private let employeeList = UITabBarItem(title: "社員一覧", image: nil, tag: 1)
     private let addNewEmployee = UITabBarItem(title: "社員登録", image: nil, tag: 2)
     
@@ -33,6 +34,7 @@ class EmployeeListViewController: UIViewController, UITabBarDelegate {
         if AccessCoreData.getStoredEmployee() == nil { return }
         storedEmployee = AccessCoreData.getStoredEmployee()!
         storedEmployee.sort(by: {$0.id < $1.id})
+        employeeCount = storedEmployee.count
     }
 
     override func viewDidAppear(_ animated: Bool) {

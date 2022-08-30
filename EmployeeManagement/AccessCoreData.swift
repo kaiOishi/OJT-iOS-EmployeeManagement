@@ -59,6 +59,23 @@ class AccessCoreData {
             return false
         }
     }
+    
+    static public func deleteEmployee(id: String) -> Bool {
+        let dataCondition = NSFetchRequest<NSFetchRequestResult>(entityName: "Employee")
+        let predicate = NSPredicate(format: "employee_id = %@", id)
+        dataCondition.predicate = predicate
+        
+        do {
+            let results = try self.managedContext.fetch(dataCondition)
+            for emps in results {
+                self.managedContext.delete(emps as! Employee)
+            }
+            
+            return (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        } catch {
+            return false
+        }
+    }
 }
 
 extension Employee {

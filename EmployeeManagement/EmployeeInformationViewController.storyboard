@@ -23,14 +23,7 @@
                                     <constraint firstAttribute="width" constant="60" id="vXz-aN-gEi"/>
                                 </constraints>
                                 <attributedString key="attributedText">
-                                    <fragment content="社員">
-                                        <attributes>
-                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="17" name=".HiraKakuInterface-W3"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="ID">
+                                    <fragment content="社員ID">
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" metaFont="system" size="17"/>
@@ -67,7 +60,7 @@
                                     <fragment content="氏名">
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="17" name=".HiraKakuInterface-W3"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -84,7 +77,7 @@
                                     <fragment content="セクション名">
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="17" name=".HiraKakuInterface-W3"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -101,7 +94,7 @@
                                     <fragment content="メールアドレス">
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="17" name=".HiraKakuInterface-W3"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -117,7 +110,7 @@
                                 <attributedString key="attributedText">
                                     <fragment content="メールアドレス">
                                         <attributes>
-                                            <font key="NSFont" size="17" name=".HiraKakuInterface-W3"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -133,7 +126,7 @@
                                 <attributedString key="attributedText">
                                     <fragment content="社員名">
                                         <attributes>
-                                            <font key="NSFont" size="17" name=".HiraKakuInterface-W3"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -149,7 +142,7 @@
                                 <attributedString key="attributedText">
                                     <fragment content="性別">
                                         <attributes>
-                                            <font key="NSFont" size="17" name=".HiraKakuInterface-W3"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -165,7 +158,7 @@
                                 <attributedString key="attributedText">
                                     <fragment content="所属セクション">
                                         <attributes>
-                                            <font key="NSFont" size="16" name=".HiraKakuInterface-W3"/>
+                                            <font key="NSFont" metaFont="system" size="16"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -182,7 +175,7 @@
                                     <fragment content="性別">
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="17" name=".HiraKakuInterface-W3"/>
+                                            <font key="NSFont" metaFont="system" size="17"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -203,6 +196,22 @@
                                     <action selector="didTappEditButton:" destination="xh2-3W-HR7" eventType="touchUpInside" id="jcv-B9-IGs"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z1B-os-hAq">
+                                <rect key="frame" x="128" y="350" width="80" height="40"/>
+                                <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Agn-GU-7A2"/>
+                                    <constraint firstAttribute="height" constant="40" id="UZt-uN-ger"/>
+                                    <constraint firstAttribute="width" constant="80" id="Zdd-IB-h8i"/>
+                                    <constraint firstAttribute="width" constant="80" id="g1X-mk-z3j"/>
+                                </constraints>
+                                <color key="tintColor" red="0.013816597539999999" green="0.013816597539999999" blue="0.013816597539999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="削除"/>
+                                <connections>
+                                    <action selector="didTapDeleteButton:" destination="xh2-3W-HR7" eventType="touchUpInside" id="9Vw-jp-HsO"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hqj-S5-ps3"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -212,6 +221,7 @@
                             <constraint firstItem="7IC-eS-0ni" firstAttribute="top" secondItem="Rs4-iS-qdT" secondAttribute="bottom" constant="8" id="8QZ-Gu-76O"/>
                             <constraint firstItem="bDm-75-JTR" firstAttribute="leading" secondItem="hqj-S5-ps3" secondAttribute="leading" constant="32" id="IFS-4J-9um"/>
                             <constraint firstItem="rBJ-y6-sc4" firstAttribute="top" secondItem="hqj-S5-ps3" secondAttribute="top" constant="8" id="JRU-Bu-2kk"/>
+                            <constraint firstItem="Z1B-os-hAq" firstAttribute="leading" secondItem="bDm-75-JTR" secondAttribute="trailing" constant="16" id="LNg-vp-CJZ"/>
                             <constraint firstItem="rBJ-y6-sc4" firstAttribute="leading" secondItem="hqj-S5-ps3" secondAttribute="leading" constant="32" id="Men-U6-dQP"/>
                             <constraint firstItem="9FI-0V-QQx" firstAttribute="leading" secondItem="hqj-S5-ps3" secondAttribute="leading" constant="32" id="Mns-eb-sZ1"/>
                             <constraint firstItem="g3S-hy-Iw3" firstAttribute="top" secondItem="7IC-eS-0ni" secondAttribute="bottom" constant="8" id="Nsc-x1-trI"/>
@@ -224,6 +234,7 @@
                             <constraint firstItem="hqj-S5-ps3" firstAttribute="trailing" secondItem="Rs4-iS-qdT" secondAttribute="trailing" constant="32" id="bcM-G6-Jhb"/>
                             <constraint firstItem="hqj-S5-ps3" firstAttribute="trailing" secondItem="g3S-hy-Iw3" secondAttribute="trailing" constant="32" id="ey7-oH-Rhe"/>
                             <constraint firstItem="T6a-gT-5vX" firstAttribute="top" secondItem="9FI-0V-QQx" secondAttribute="bottom" constant="8" id="jv6-S6-Y4Z"/>
+                            <constraint firstItem="Z1B-os-hAq" firstAttribute="top" secondItem="9FI-0V-QQx" secondAttribute="bottom" constant="74" id="l9Z-6i-xCi"/>
                             <constraint firstItem="jaj-WN-hXB" firstAttribute="leading" secondItem="hqj-S5-ps3" secondAttribute="leading" constant="32" id="n9s-ye-xkd"/>
                             <constraint firstItem="bDm-75-JTR" firstAttribute="top" secondItem="T6a-gT-5vX" secondAttribute="bottom" constant="16" id="oIh-bm-APC"/>
                             <constraint firstItem="adQ-eT-qi0" firstAttribute="leading" secondItem="hqj-S5-ps3" secondAttribute="leading" constant="32" id="pTG-Dz-4lS"/>
